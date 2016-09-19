@@ -1,0 +1,73 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+@margin: 0.25in;
+@border: 0.125in;
+@thin: 0.05in;
+body {
+    width: calc(11in - 2 * @margin);
+    height: calc(8.5in - 2 * @margin);
+    
+    // top right bottom left
+    // Let's ignore the right/bottom margins.
+    margin: @margin 0 0 @margin;
+    border: @border solid red;
+//    border: @thin solid black;
+    border-radius: calc(@border * 2);
+    padding: @border;
+
+    font: 600 66pt "Open Sans", sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+//    font-variant: small-caps;
+
+    display: flex;
+    flex-direction: column;
+}
+
+body > * {
+    display: block;
+    flex-grow: 1;
+    border: @thin solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@ca: red;
+@cb: transparent;
+@width: 0.5in;
+
+stripe {
+    background: repeating-linear-gradient(
+        45deg,
+        @ca,
+        @ca @width,
+        @cb @width,
+        @cb calc(@width * 2)
+    );
+}
+inverse {
+    font-size: 108pt;
+    font-weight: 900;
+    padding: 0.125in 0;
+    
+    border: @thin solid black;
+    background-color: red;
+    color: white;
+    flex-grow: 0;
+}
+
+.fit {
+    max-height: 1em;
+    max-width: 1em;
+}
+
+.inline {
+    display: inline-block !important;
+}
